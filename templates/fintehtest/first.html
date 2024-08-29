@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div>
+        <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                  <th >Item list </th>
+              </tr>
+            </thead>
+              <tbody>
+                {% for object in queryset %}
+                        <tr>
+                            <td>
+                                    <a href="{% url 'fintehtest:get_id_on_template' object.pk %}" >{{object.pk}} {{object.name}}</a>
+                            </td>
+                        </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+
+    </div>
+
+    <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <button type="submit" id="input-group-text">Buy</button>
+
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>
