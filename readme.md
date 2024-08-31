@@ -47,6 +47,8 @@
 ##
         python manage.py migrate
 ##
+        python manage.py loaddata db.json
+##
         python manage.py runserver
 
 - Раскомментировали view.py 6 str , forms.py 11-20
