@@ -3,7 +3,15 @@ from django.shortcuts import render
 import requests
 from django.urls import reverse
 from config.settings import BASE_URL, STRIP_API_KEY
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 from fintehtest.forms import StripIdForm
+=======
+#from fintehtest.forms import StripIdForm
+>>>>>>> Stashed changes
+=======
+#from fintehtest.forms import StripIdForm
+>>>>>>> Stashed changes
 from fintehtest.models import Item
 import stripe
 from django.http import JsonResponse, HttpResponse
@@ -19,6 +27,8 @@ def get_stripe_session_key(request):
         queryset = Item.objects.all()
         context = {"queryset":queryset}
     
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     # return render(request, "templates/fintehtest/first.html", context)
     
     return JsonResponse({"publicKey": settings.STRIPE_PUBLISHABLE_KEY})
@@ -52,6 +62,18 @@ def get_stripe_session_key(request):
 
 
 """Кнопка на теплейте черерз Джанго формы выдает номер обджекта, session_id получаем из функции get_id_on_template, htlbhtrnbv """
+=======
+    return JsonResponse({"publicKey": settings.STRIPE_PUBLISHABLE_KEY})
+
+
+"""Кнопка на теплейте черерз Джанго формы выдает номер обджекта, session_id получаем из функции get_session_id """
+>>>>>>> Stashed changes
+=======
+    return JsonResponse({"publicKey": settings.STRIPE_PUBLISHABLE_KEY})
+
+
+"""Кнопка на теплейте черерз Джанго формы выдает номер обджекта, session_id получаем из функции get_session_id """
+>>>>>>> Stashed changes
 def get_obj_buttn(request):
     qureyset = Item.objects.all()
     form = StripIdForm()
@@ -66,12 +88,20 @@ def get_obj_buttn(request):
             # print('1111111111111', request.POST['name'])
             pk = request.POST['name']
             # session_id = get_session_id(request, pk)._container[0].hex() - обратно из джейсона
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             
             # print('session_id', session_id) # 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
             item = Item.objects.get(id=pk)
             context={"form":form,
                      'session_id':get_session_id(request, pk).id,
                      'item':item}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             # line_items=[
             #     {
                         
@@ -90,16 +120,40 @@ def get_obj_buttn(request):
             return render(request, "templates/fintehtest/second.html", context)
         else:
             # print('2222222222222222', request.GET)
+=======
+           
+            return render(request, "templates/fintehtest/second.html", context)
+        else:
+>>>>>>> Stashed changes
+=======
+           
+            return render(request, "templates/fintehtest/second.html", context)
+        else:
+>>>>>>> Stashed changes
             form = StripIdForm()
 
     return render(request, "templates/fintehtest/second.html", context)
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 """На входе номер обджекта, на выходе сессион id"""
 def get_session_id(request, pk):#**kwargs):
     # pk = kwargs['pk']
     item_instance = Item.objects.all().get(id=pk)
 
+=======
+
+"""На входе номер обджекта, на выходе сессион id"""
+def get_session_id(request, pk):
+    item_instance = Item.objects.all().get(id=pk)
+>>>>>>> Stashed changes
+=======
+
+"""На входе номер обджекта, на выходе сессион id"""
+def get_session_id(request, pk):
+    item_instance = Item.objects.all().get(id=pk)
+>>>>>>> Stashed changes
     stripe.api_key = STRIP_API_KEY
     session = stripe.checkout.Session.create(
             payment_method_types=["card"],
@@ -124,6 +178,8 @@ def get_session_id(request, pk):#**kwargs):
             # cancel_url=BASE_URL+reverse('fintehtest:get_id_on_template', kwargs={'pk': pk}),
         )
     return session
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # JsonResponse({
 #             'session_id': session.id
 #         })
@@ -139,12 +195,20 @@ def get_session_id(request, pk):#**kwargs):
 #  return render(request,'checkout.html')
 
 #success view
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 def success_strip(request):
     return render(request,'templates/fintehtest/success.html')
 
  #cancel view
 def cancel_strip(request):
     return render(request,'templates/fintehtest/cancel.html')
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 # https://github.com/vadushkin/Stripe-shopping/blob/main/products/views.py
 # acct_1PsjVH07pGox0kT4
 
@@ -156,6 +220,12 @@ def cancel_strip(request):
 
 # Please note: this key will expire after 90 days, at which point you'll need to re-authenticate.
 # andrey_mazo@andreymazo:~/Downloads$ 
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 @csrf_exempt
 def webhook(request):
     endpoint_secret = ''
@@ -180,6 +250,14 @@ def webhook(request):
         # TODO: run some custom code here
 
     return HttpResponse(status=200)
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+=======
+
+>>>>>>> Stashed changes
 # stripe listen --forward-to localhost:8000/webhooks/stripe/
 # https://github.com/vadushkin/Stripe-shopping/blob/main/products/views.py
 

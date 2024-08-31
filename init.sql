@@ -1,0 +1,3 @@
+CREATE USER postgres;
+CREATE DATABASE fintehtest;
+GRANT ALL PRIVILEGES ON DATABASE fintehtest TO postgres;

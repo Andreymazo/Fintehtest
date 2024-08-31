@@ -8,13 +8,13 @@ from fintehtest.models import Item
 #     choices = [(f"{i}", i) for i in queryset]
 #     choose_category = serializers.ChoiceField(choices=choices)
 
-class StripIdForm(ModelForm):
+# class StripIdForm(ModelForm):
 
-    class Meta:
-        CHOICES = Item.objects.all()
-        model=Item
-        # fields = "__all__"
-        fields = ('name',)
-        widgets = {
-            'name': Select(choices=( (x.id, x.name) for x in CHOICES )),
-        }
+#     class Meta:
+#         CHOICES = Item.objects.all()
+#         model=Item
+#         # fields = "__all__"
+#         fields = ('name',)
+#         widgets = {
+#             'name': Select(choices=( (x.id, x.name) for x in CHOICES )),
+#         }
