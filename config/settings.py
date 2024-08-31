@@ -33,12 +33,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*', '127.0.0.1']
-ALLOWED_HOSTS = ['.loca.lt', '127.0.0.1']
+ALLOWED_HOSTS = ['.loca.lt', '127.0.0.1', 'localhost']
 # npm install -g localtunnel
 # lt --subdomain my-unique-subdomain --port 8000
 
+STRIP_API_KEY = "sk_test_51PsjVH07pGox0kT4xVp7n7OAmqmork1Kv4DjUh8EkB2EGLZdKnsjp5CayOqgJZOtPUXwlGbKeqoLLVw8qP6pZxyr00dnLftcE4"
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PsjVH07pGox0kT4XEK6FPDiOOBKVaWr7KyvplADcTjJQDqMywkDywwvL8yPfCJ8f3XHYUWs5FgoUhtKEs4WFlBb00yZu0QbXA'
+# STRIPE_SECRET_KEY = 'sk_test_51PsjVH07pGox0kT4xVp7n7OAmqmork1Kv4DjUh8EkB2EGLZdKnsjp5CayOqgJZOtPUXwlGbKeqoLLVw8qP6pZxyr00dnLftcE4'
 CSRF_TRUSTED_ORIGINS = ['http://*.loca.lt', 'https://*.loca.lt']
-
+STRIPE_ENDPOINT_SECRET='whsec_0b973e60cc8af0489879a7ed06ffc73c545196326653d018a99452dfe2980448'
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fintehtest',
+    "fintehtest.apps.FintehtestConfig",
+
 ]
 
 MIDDLEWARE = [
@@ -66,7 +70,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, ],
+        'DIRS': [BASE_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,7 +139,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ('static',)
+# STATIC_URL = '/static/'
+# # STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# # STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),
+
+
+
+# STATIC_FILES_DIRS = ['/home/andrey_mazo/Projects/FintehTest/static',]
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '/home/andrey_mazo/Projects/FintehTest/static']
+# STATICFILES_DIRS = [
+    
+#     ("static" , '/home/andrey_mazo/Projects/FintehTest/static'),
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# PATH_TO_YOUR_STATIC_FOLDER='/static/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
