@@ -25,9 +25,63 @@
 - написание readme по всем нюансам и способам запуска
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+Через джанго формы выбираем. прокидываем данные в пэймент, получаем сессион айди и вставляем его в срип.редирект(не питоновская, а джавоскриптовая функция). Без фетча зашло.
+Закомментировал view.py 6 str , forms.py 11-20 докер не запускался. Пока не знаю как запускать докер и работать черерз него с джаного-формой. Пока костыль, можно запустить черерз докер и все, чтобы сработало, нужно раскомментировать и запустить python manage.py runserver.
+
+- Запуск Убунту
+Создаем базу, Постгрес уже установлен, вас пускает по команде (если нет, то смотрим интеренет как поменять в конфигурации peer --> trust)
+Заходим
+##
+        psql -U postgres
+Делаем пароль 123456
+##
+        psql -U postgres ALTER ROLE postgres WITH PASSWORD '123456';
+Создаем базу и к ней присоединяемся
+##
+        create database fintehtest; \c fintehtest
+Зависимости
+##
+        pip install -r requirements.txt
+Миграции
+##
+        python manage.py makemjigrations
+##
+        python manage.py migrate
+##
+        python manage.py runserver
+
+- Раскомментировали view.py 6 str , forms.py 11-20
+
+- на выпадающей странице выбираете лодку и оплачиваете, как на видосе.
+- внизу команды постоянно пригождающиеся
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 [Screencast from 31.08.2024 12:51:14.webm](https://github.com/user-attachments/assets/37991401-da11-49cd-b03f-829fa595e74b)
 
+# Очистка от всех контейнеров, имиджей и вольюмов:
+# docker stop $(docker ps -a -q)
+# docker-compose down --volumes
+# docker volume prune
+# docker rm $(docker ps -a -q)
+# docker rmi $(docker images -a -q)
+# docker rmi -f $(docker images -aq)
+# docker volume rm $(docker volume ls -q --filter dangling=true)
 
+# Проверка (должны быть пустые строки)
+# docker images -a
+# docker ps -a
+# docker volume ls
+<<<<<<< Updated upstream
+
+<<<<<<< Updated upstream
 =======
 <!-- 
 <body>
@@ -167,4 +221,11 @@
                 });
         });
     </script> -->
+>>>>>>> Stashed changes
+=======
+# fuser -n tcp -k 8000
+>>>>>>> Stashed changes
+=======
+
+# fuser -n tcp -k 8000
 >>>>>>> Stashed changes
