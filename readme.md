@@ -72,4 +72,4 @@
 - docker ps -a
 - docker volume ls
 
-# fuser -n tcp -k 8000
+- fuser -n tcp -k 8000
