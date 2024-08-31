@@ -58,18 +58,18 @@
 
 [Screencast from 31.08.2024 12:51:14.webm](https://github.com/user-attachments/assets/37991401-da11-49cd-b03f-829fa595e74b)
 
-# Очистка от всех контейнеров, имиджей и вольюмов:
-# docker stop $(docker ps -a -q)
-# docker-compose down --volumes
-# docker volume prune
-# docker rm $(docker ps -a -q)
-# docker rmi $(docker images -a -q)
-# docker rmi -f $(docker images -aq)
-# docker volume rm $(docker volume ls -q --filter dangling=true)
+- Очистка от всех контейнеров, имиджей и вольюмов:
+- docker stop $(docker ps -a -q)
+- docker-compose down --volumes
+- docker volume prune
+- docker rm $(docker ps -a -q)
+- docker rmi $(docker images -a -q)
+- docker rmi -f $(docker images -aq)
+- docker volume rm $(docker volume ls -q --filter dangling=true)
 
-# Проверка (должны быть пустые строки)
-# docker images -a
-# docker ps -a
-# docker volume ls
+- Проверка (должны быть пустые строки)
+- docker images -a
+- docker ps -a
+- docker volume ls
 
 # fuser -n tcp -k 8000
